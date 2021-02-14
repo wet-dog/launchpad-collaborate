@@ -474,9 +474,13 @@ function CreateProject() {
         rows={4}
       />
 
-      <button type="submit" autoComplete="off" disabled={!valid}>
-        Send
-      </button>
+        <Button 
+          style={{alignSelf: "center", fontSize: 18,flexGrow: 1, marginTop: 10}} 
+          variant="contained" color="primary" 
+          component={Link} to="/UserProfile"
+        >
+          Create
+        </Button>
     </form>
   );
 }

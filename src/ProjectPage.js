@@ -190,7 +190,7 @@ function ProjectPage() {
                 style={{marginLeft: 50, alignSelf: "center", padding: 25}} 
                 variant="contained" color="primary" 
                 component={Link} 
-                to="/CreateProject"
+                to="/JobApplication"
             >
               <Typography variant="h6" className={classes.title}>
                 New Job
