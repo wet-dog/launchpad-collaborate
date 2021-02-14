@@ -182,7 +182,7 @@ function BusinessProfile() {
                 labelId="label"
                 autoComplete="off"
                 multiline
-                rowsMax="auto"
+                rowsMax="15"
                 variant="outlined"
                 />
             {/* </div> */}
