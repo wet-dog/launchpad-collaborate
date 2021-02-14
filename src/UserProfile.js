@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 0,
     },
     title: {
-        align: "center",
+        alignSelf: "start",
         flexGrow: 0,
     },
     chips: {
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
       padding: 24,
       display: "flex",
       flexDirection: "column",
-      alignItems: "center",
+      alignItems: "end",
       backgroundColor: "#ffffff",
     },
     container: {
@@ -66,6 +66,15 @@ const useStyles = makeStyles((theme) => ({
     },
     textBox: {
       backgroundColor: "#fafbfc"
+    },
+    project: {
+      display: "flex",
+      alignSelf: "center",
+      padding: 10,
+      margin: 10,
+      flexFlow: "column",
+      backgroundColor: "#fafbfc",
+      width: "100%",
     }
   }));
   
@@ -129,7 +138,7 @@ function UserProfile() {
     return (
         <div className={classes.container}>
         <Paper className={classes.paper}>
-            <Typography variant="h6" className={classes.title}>
+            <Typography style={{paddingTop: 19}} variant="h6" className={classes.title}>
                 Profile
             </Typography>
 
@@ -148,13 +157,43 @@ function UserProfile() {
         
         {/* Second half */}
         <Paper className={classes.paper2}>
+          <div style={{width: "100%", display: "flex", flexFlow: "row", alignItems: "center", justifyContent: "space-between"}}>
+            <Typography style={{alignSelf: "center"}} variant="h6" className={classes.title}>
+                My Projects
+            </Typography>
             <SearchBar />
-            <Paper style={{width: "100%", height: "100px", color: "blue"}}>
-            <SearchBar />
-            </Paper>
+
+          </div>
+
+
+            <hr style={{width: "100%"}}></hr>
+            <Project index="1" business="foo" role="bar" />
+            <Project index="2" business="foo" role="bar" />
+            <Project index="3" business="foo" role="bar" />
+            <Project index="4" business="foo" role="bar" />
+            <Project index="5" business="foo" role="bar" />
         </Paper>
         </div>
     );
+}
+
+function Project(props) {
+  const classes = useStyles();
+
+  return (
+    <Paper className={classes.project}>
+      <Typography variant="h6" className={classes.title}>
+          Project: {props.index}
+      </Typography>
+      
+      <Typography variant="h6" className={classes.title}>
+          Business: {props.business}
+      </Typography>   
+      <Typography variant="h6" className={classes.title}>
+          Role: {props.role}
+      </Typography>       
+    </Paper>
+  );
 }
 
 function SearchBar() {
