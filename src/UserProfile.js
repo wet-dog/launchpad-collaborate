@@ -61,8 +61,8 @@ const useStyles = makeStyles((theme) => ({
       position: "absolute", 
       alignItems: "stretch",
       justifyContent: "center",
-      width: "100%",
-      height: "100%",
+      width: "90%",
+      height: "90%",
     },
     textBox: {
       backgroundColor: "#fafbfc"

@@ -11,6 +11,7 @@ import {
 
 import BusinessSignUp from './BusinessSignUp';
 import UserSignUp from './UserSignUp';
+import BusinessProfile from './BusinessProfile';
 import UserProfile from './UserProfile';
 
 import Button from '@material-ui/core/Button';
@@ -134,6 +135,7 @@ function App() {
               </IconButton>
               <Button color="inherit" component={Link} to="/UserSignUp">User Sign Up</Button>
               <Button color="inherit" component={Link} to="/BusinessSignUp">Business Sign Up</Button>
+              <Button color="inherit" component={Link} to="/BusinessProfile">Business Profile</Button>
               <Button color="inherit">Login</Button>
             </Toolbar>
           </Paper>
@@ -157,6 +159,9 @@ function App() {
             </Route>
             <Route path="/UserProfile">
               <UserProfile />
+            </Route>
+            <Route path="/BusinessProfile">
+              <BusinessProfile />
             </Route>
           </Switch> 
         </main>
