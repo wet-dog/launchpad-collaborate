@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
@@ -157,11 +164,18 @@ function BusinessProfile() {
                     <Information label="Address" value={address} />
                     
                     <Button 
-                        style={{alignSelf: "flex-end", flexGrow: 1, marginTop: 10}} 
+                        style={{alignSelf: "flex-end", flexGrow: 2, marginTop: 10, width:"100%"}} 
                         variant="contained" color="primary" 
                         startIcon={<Language /> }
                     >
                         Website
+                    </Button>
+                    <Button 
+                        style={{alignSelf: "flex-end", flexGrow: 1, marginTop: 10}} 
+                        variant="contained" color="primary" 
+                        component={Link} to="/JobApplication"
+                    >
+                        Create Job Listing
                     </Button>
 
                 </div>

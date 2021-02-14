@@ -18,8 +18,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Menu from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { Avatar, Divider } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
+import { Divider, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     menuButton: {
@@ -60,8 +59,9 @@ const useStyles = makeStyles((theme) => ({
       width: "66%",
       padding: 24,
       display: "flex",
-      flexDirection: "column",
-      alignItems: "end",
+      flexWrap: "wrap",
+      flexDirection: "row",
+      alignItems: "center",
       backgroundColor: "#ffffff",
     },
     container: {
@@ -78,13 +78,16 @@ const useStyles = makeStyles((theme) => ({
     },
     project: {
       display: "flex",
-      alignSelf: "center",
       padding: 10,
       margin: 10,
-      flexFlow: "row",
+      flexFlow: "column",
       backgroundColor: "#fafbfc",
-      width: "100%",
-    }
+      width: "20%",
+      height:"30%"
+    },
+    table: {
+        width: 650,
+    },
   }));
   
 function Information(props) {
@@ -107,9 +110,10 @@ function Information(props) {
     );
 }
 
-function UserProfile() {
+function ProjectPage() {
     const classes = useStyles();
 
+    const [projectName, setProjectName] = useState("Project Foo")
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
@@ -148,7 +152,7 @@ function UserProfile() {
         <div className={classes.container}>
         <Paper className={classes.paper}>
             <Typography style={{paddingTop: 19}} variant="h6" className={classes.title}>
-                Profile
+                {projectName}
             </Typography>
 
             <hr style={{width: "100%"}}></hr>
@@ -168,7 +172,7 @@ function UserProfile() {
         <Paper className={classes.paper2}>
           <div style={{width: "100%", display: "flex", flexFlow: "row", alignItems: "center", justifyContent: "space-between"}}>
             <Typography style={{alignSelf: "center"}} variant="h6" className={classes.title}>
-                My Projects
+                Project Jobs
             </Typography>
             <SearchBar />
 
@@ -176,20 +180,20 @@ function UserProfile() {
 
 
             <hr style={{width: "100%"}}></hr>
-            <Project index="1" business="foo" role="bar" />
-            <Project index="2" business="foo" role="bar" />
-            <Project index="3" business="foo" role="bar" />
-            <Project index="4" business="foo" role="bar" />
-            <Project index="5" business="foo" role="bar" />
+            <Project index="1" business="foo" role="Foologist" />
+            <Project index="2" business="foo" role="Foologist" />
+            <Project index="3" business="foo" role="Foologist" />
+            <Project index="4" business="foo" role="Foologist" />
+            <Project index="5" business="foo" role="Foologist" />
 
             <Button 
-                style={{alignSelf: "flex-start", marginTop: 10, padding: 25}} 
+                style={{marginLeft: 50, alignSelf: "center", padding: 25}} 
                 variant="contained" color="primary" 
                 component={Link} 
                 to="/CreateProject"
             >
               <Typography variant="h6" className={classes.title}>
-                New Project
+                New Job
               </Typography>
             </Button>
         </Paper>
@@ -202,29 +206,43 @@ function Project(props) {
 
   return (
     <Paper className={classes.project}>
-      <div style={{display: "flex", flexFlow:"column", alignItems:"start"}}>
+      <div style={{width: "100%", display: "flex", flexFlow:"column"}}>
       <Typography variant="h6" className={classes.title}>
-          Project: {props.index}
+          Job {props.index}
       </Typography>
       
-      <Typography variant="h6" className={classes.title}>
-          Business: {props.business}
-      </Typography>   
+      <InputLabel style={{color: "black", alignSelf: "start"}} id="label">
+                <Typography variant="h6" className={classes.title}>
+                    Description
+                </Typography>
+                </InputLabel>
+                <TextField style={{height: "auto", width: "100%"}} value="Foo description" className={classes.textBox}
+                labelId="label"
+                autoComplete="off"
+                multiline
+                rowsMax="15"
+                variant="outlined"
+                />
+
+
       <Typography variant="h6" className={classes.title}>
           Role: {props.role}
       </Typography>
+
+      <InputLabel style={{color: "black", alignSelf: "start"}} id="label">
+                <Typography variant="h6" className={classes.title}>
+                    Technologies
+                </Typography>
+                </InputLabel>
+                <TextField style={{height: "auto", width: "100%"}} value="Foo++, Bar#, Barscript" className={classes.textBox}
+                labelId="label"
+                autoComplete="off"
+                multiline
+                rowsMax="15"
+                variant="outlined"
+                />
       </div>
     
-      <Button 
-        style={{marginLeft: "auto", alignSelf: "end", padding: 25}} 
-        variant="contained" color="primary" 
-        component={Link} 
-        to="/ProjectPage"
-      >
-        <Typography variant="h6" className={classes.title}>
-          View Project
-        </Typography>
-      </Button>
     </Paper>
   );
 }
@@ -248,4 +266,5 @@ function SearchBar() {
     );
 }
 
-export default UserProfile;
+
+export default ProjectPage;

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -84,8 +86,14 @@ function BusinessSignUp() {
           variant="outlined"
           rows={2}
         />
-  
-        <button type="submit" autoComplete="off" disabled={!valid}>Send</button>
+
+        <Button 
+          style={{alignSelf: "center", fontSize: 18,flexGrow: 1, marginTop: 10}} 
+          variant="contained" color="primary" 
+          component={Link} to="/BusinessProfile"
+        >
+          Sign Up
+        </Button>
       </form>
     );
   }
